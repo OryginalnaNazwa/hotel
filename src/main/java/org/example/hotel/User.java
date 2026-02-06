@@ -1,5 +1,8 @@
 package org.example.hotel;
 
+/**
+ * User
+ */
 public class User {
     String username;
     String password;

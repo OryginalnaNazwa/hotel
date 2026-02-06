@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import static java.lang.Float.parseFloat;
 
+/**
+ * Window to edit basic information about the hotel.
+ */
 public class AdminEditDataController {
     Database database = new Database(); //TODO should be from file
 
@@ -31,6 +34,11 @@ public class AdminEditDataController {
         if (database.hotel.floors > 1) hotelFloorsValue.increment(database.hotel.floors - 1);
     }
 
+
+    /**
+     * @brief Saves hotel data if it is correct.
+     * @details Highlights incorrect values in red without saving if those exist.
+     */
     @FXML
     protected void onSaveHotelDataButtonClick() {
         boolean correct = true;
@@ -54,6 +62,9 @@ public class AdminEditDataController {
         }
     }
 
+    /**
+     * Reverts changes.
+     */
     @FXML
     protected void onAbortHotelDataButtonClick() {
         hotelNameValue.setText(database.hotel.name);
@@ -62,6 +73,10 @@ public class AdminEditDataController {
         hotelFloorsValue.getValueFactory().setValue(database.hotel.floors);
     }
 
+    /**
+     * @brief Checks if the value in the field is different from the one in database.
+     * @details If it is, highlights the field with yellow outline.
+     */
     @FXML
     protected void HasValueChanged_Name() {
         if (hotelNameValue.getText().equals(database.hotel.name)) {
@@ -71,6 +86,10 @@ public class AdminEditDataController {
         }
     }
 
+    /**
+     * @brief Checks if the value in the field is different from the one in database.
+     * @details If it is, highlights the field with yellow outline.
+     */
     @FXML
     protected void HasValueChanged_Stars() {
         if (hotelStarsValue.getValue().equals(database.hotel.stars)) {
@@ -80,6 +99,10 @@ public class AdminEditDataController {
         }
     }
 
+    /**
+     * @brief Checks if the value in the field is different from the one in database.
+     * @details If it is, highlights the field with yellow outline.
+     */
     @FXML
     protected void HasValueChanged_Floors() {
         if (hotelFloorsValue.getValue().equals(database.hotel.floors)) {
@@ -89,6 +112,10 @@ public class AdminEditDataController {
         }
     }
 
+    /**
+     * @brief Checks if the value in the field is different from the one in database.
+     * @details If it is, highlights the field with yellow outline.
+     */
     @FXML
     protected void HasValueChanged_Multiplier() {
         if (hotelMultiplierValue.getText().equals(database.hotel.defaultPremiumMultiplier.toString())) {

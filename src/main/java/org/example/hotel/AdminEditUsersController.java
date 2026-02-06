@@ -8,6 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
+/**
+ * Admin only window of viewing and editing user data.
+ */
 public class AdminEditUsersController {
     Database database = new Database();
 
@@ -30,6 +33,10 @@ public class AdminEditUsersController {
         Tabela.setItems(database.users);
     }
 
+    /**
+     * @brief Adds new user.
+     * @details New user has username "user", password "user" and is not an admin. Change these immediately with edit users.
+     */
     @FXML
     protected void addUser(){
         database.users.add(new User("user","user", false));

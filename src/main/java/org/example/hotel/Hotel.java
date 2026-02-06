@@ -1,5 +1,9 @@
 package org.example.hotel;
 
+/**
+ * @class Hotel
+ * A class holding the basic information about the hotel.
+ */
 public class Hotel {
     String name;
     String address;

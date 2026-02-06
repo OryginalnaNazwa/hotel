@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Root admin view window. User can then choose whether to edit hotel data or edit users.
+ */
 public class AdminController {
     Database database = new Database(); //TODO should be from file
 

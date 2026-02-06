@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * Log-in window
+ */
 public class AppController {
 
     Database database = new Database();
@@ -24,6 +26,11 @@ public class AppController {
     @FXML
     private PasswordField passwordArea;
 
+    /**
+     * @brief Handles logging in.
+     * @details Handles incorrect login. Opens admin view if user is an admin, normal otherwise.
+     * @throws IOException
+     */
     @FXML
     protected void onLoginButtonClick() throws IOException {
         systemText.setText("");
@@ -61,6 +68,11 @@ public class AppController {
         }
     }
 
+    /**
+     * Checks if enter key is pressed - for logging without button press.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void isEnter(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
