@@ -6,6 +6,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 
 /**
@@ -24,13 +25,27 @@ public class AdminEditUsersController {
 
     @FXML
     public void initialize(){
+        usernameCol.setCellFactory(
+                TextFieldTableCell.forTableColumn());
+
+        nameCol.setCellFactory(
+                TextFieldTableCell.forTableColumn());
+        lastNameCol.setCellFactory(
+                TextFieldTableCell.forTableColumn());
+
         adminCol.setCellValueFactory(new PropertyValueFactory<>("admin"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         //wypozyczaczCol.setCellValueFactory(new PropertyValueFactory<>("wypozyczacz"));
+        //usernameCol.setCellFactory(new Ca);
 
         Tabela.setItems(database.users);
+    }
+
+    @FXML
+    protected void setFieldUsername(String username){
+
     }
 
     /**
