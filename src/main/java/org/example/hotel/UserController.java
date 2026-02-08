@@ -38,4 +38,16 @@ public class UserController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    protected void onMangageReservationsClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user_manage_reservations-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        UserEditDataController controller = fxmlLoader.getController();
+        controller.currentlyLoggedUser = this.currentlyLoggedUser;
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Systems - Manage Reservations");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

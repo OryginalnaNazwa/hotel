@@ -92,7 +92,7 @@ public class UserEditDataController {
      * Reverts changes.
      */
     @FXML
-    protected void onAbortHotelDataButtonClick() {
+    protected void onAbortUserDataButtonClick() {
         nameValue.setText(database.GetUserName(currentlyLoggedUser));
         lastNameValue.setText(database.GetUserName(currentlyLoggedUser));
         emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
