@@ -29,7 +29,7 @@ public class UserController {
 
     @FXML
     protected void onEditYourDataClick() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user_edit_data-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-edit_data-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 480, 320);
         UserEditDataController controller = fxmlLoader.getController();
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
@@ -42,8 +42,8 @@ public class UserController {
     @FXML
     protected void onMangageReservationsClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user_manage_reservations-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
-        UserEditDataController controller = fxmlLoader.getController();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 680);
+        UserManageReservationsController controller = fxmlLoader.getController();
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems - Manage Reservations");

@@ -47,6 +47,9 @@ public class UserEditDataController {
         lastNameValue.setStyle("-fx-border-color: black;");
         emailValue.setStyle("-fx-border-color: black;");
         phoneValue.setStyle("-fx-border-color: black;");
+        oldPasswordValue.setStyle("-fx-border-color: black;");
+        newPasswordValue.setStyle("-fx-border-color: black;");
+
         if (nameValue.getText().isEmpty()) {
             correct = false;
             nameValue.setStyle("-fx-border-color: red;");
@@ -55,31 +58,36 @@ public class UserEditDataController {
             correct = false;
             lastNameValue.setStyle("-fx-border-color: red;");
         } else database.SetUserLastName(currentlyLoggedUser, lastNameValue.getText());
-        if (!emailValue.getText().isEmpty() && IsEmailValid(emailValue.getText())) {
+        if (emailValue.getText().isEmpty() || !IsEmailValid(emailValue.getText())) {
             correct = false;
             emailValue.setStyle("-fx-border-color: red;");
         }  else database.SetUserEmail(currentlyLoggedUser, emailValue.getText());
-        if (!phoneValue.getText().isEmpty() && phoneValue.getText().length() != 9) {
+        if (phoneValue.getText().isEmpty() || phoneValue.getText().length() != 9) {
             correct = false;
             phoneValue.setStyle("-fx-border-color: red;");
         } else database.SetUserPhone(currentlyLoggedUser, phoneValue.getText());
 
-        if (!oldPasswordValue.getText().isEmpty() && !newPasswordValue.getText().isEmpty()) {
-            if (IsPasswordCorrect(oldPasswordValue.getText())) {
-                if (oldPasswordValue.getText().equals(newPasswordValue.getText())) {
+        if (oldPasswordValue.getText().isEmpty() && newPasswordValue.getText().isEmpty()) {
+            oldPasswordValue.setStyle("-fx-border-color: black;");
+            newPasswordValue.setStyle("-fx-border-color: black;");
+        } else {
+            if (oldPasswordValue.getText().isEmpty()) {
+                correct = false;
+                oldPasswordValue.setStyle("-fx-border-color: red;");
+            } else if (newPasswordValue.getText().isEmpty()) {
+                correct = false;
+                newPasswordValue.setStyle("-fx-border-color: red;");
+            } else {
+                if (!IsPasswordCorrect(oldPasswordValue.getText())) {
+                    correct = false;
+                    oldPasswordValue.setStyle("-fx-border-color: red;");
+                } else if (oldPasswordValue.getText().equals(newPasswordValue.getText())) {
                     correct = false;
                     oldPasswordValue.setStyle("-fx-border-color: red;");
                     newPasswordValue.setStyle("-fx-border-color: red;");
-                } else  {
-                    database.SetUserPassword(currentlyLoggedUser, newPasswordValue.getText());
-                }
-            } else {
-                correct = false;
-                oldPasswordValue.setStyle("-fx-border-color: red;");
+                } else database.SetUserPassword(currentlyLoggedUser, newPasswordValue.getText());
             }
-        } else {
-            oldPasswordValue.setStyle("-fx-border-color: red;");
-            newPasswordValue.setStyle("-fx-border-color: red;");
+
         }
 
         if (correct) {
@@ -104,6 +112,8 @@ public class UserEditDataController {
         lastNameValue.setStyle("-fx-border-color: black;");
         emailValue.setStyle("-fx-border-color: black;");
         phoneValue.setStyle("-fx-border-color: black;");
+        oldPasswordValue.setStyle("-fx-border-color: black;");
+        newPasswordValue.setStyle("-fx-border-color: black;");
     }
 
     /**

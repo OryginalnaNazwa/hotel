@@ -7,11 +7,18 @@ import java.util.ArrayList;
 
 public class Database {
     public ObservableList<User> users = FXCollections.observableArrayList();
-    public Hotel hotel = new Hotel("HotelX", 3, 1, 2, 2, 1);
+    public Hotel hotel = new Hotel("HotelX", 3, 2, 2, 2, 1);
 
     public Database() {
         users.add(new User("admin", "admin", true));
         users.add(new User("user", "user", false));
+
+        hotel.AddRoom(1,"1", 1000.0F,false,3);
+        hotel.AddRoom(1,"2", 1000.0F,false,3);
+        hotel.AddRoom(1,"3", 0.0F,false,3);
+        hotel.AddRoom(1,"4", 0.0F,false,2);
+        hotel.AddRoom(2,"1", 2000.0F,true,1);
+        hotel.AddRoom(2,"1", 0.0F,true,2);
     }
 
     /**
