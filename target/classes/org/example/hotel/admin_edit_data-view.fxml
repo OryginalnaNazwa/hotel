@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="418.0" prefWidth="761.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminEditDataController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Hotel Systems - Hotel data" />
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+         <VBox alignment="CENTER" prefHeight="170.0" prefWidth="232.0" spacing="20.0">
+            <children>
+               <Label text="Hotel name" />
+                <Label text="Hotel addres" />
+                <Label text="Stars" />
+               <Label text="Floors" />
+               <Label text="Default multiplier for premium rooms" />
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" prefHeight="170.0" prefWidth="305.0" spacing="10.0">
+            <children>
+                <TextField fx:id="hotelNameValue" onKeyTyped="#HasValueChanged_Name" />
+               <TextField />
+               <Spinner fx:id="hotelStarsValue" editable="true" onMouseClicked="#HasValueChanged_Stars" />
+               <Spinner fx:id="hotelFloorsValue" editable="true" onMouseDragged="#HasValueChanged_Floors" />
+               <TextField fx:id="hotelMultiplierValue" onKeyTyped="#HasValueChanged_Multiplier" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+    <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
+        <children>
+            <Button mnemonicParsing="false" onAction="#onSaveHotelDataButtonClick" text="Save" />
+            <Button mnemonicParsing="false" onAction="#onAbortHotelDataButtonClick" text="Abort" />
+        </children></HBox>
+</VBox>

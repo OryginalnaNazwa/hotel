@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="418.0" prefWidth="761.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.UserEditDataController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Your account" />
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+        <children>
+            <VBox alignment="CENTER" prefHeight="170.0" prefWidth="232.0" spacing="20.0">
+                <children>
+                    <Label text="Name" />
+                    <Label text="Last name" />
+                    <Label text="Email" />
+                    <Label text="Phone" />
+                    <Label text="Change password   Old password" />
+               <Label text="New password" />
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="170.0" prefWidth="305.0" spacing="10.0">
+                <children>
+                    <TextField fx:id="nameValue" onKeyTyped="#HasValueChanged_Name" />
+                    <TextField fx:id="lastNameValue" onKeyTyped="#HasValueChanged_LastName" />
+                    <TextField fx:id="emailValue" onKeyTyped="#HasValueChanged_Email" />
+               <TextField fx:id="phoneValue" onKeyTyped="#HasValueChanged_Phone" />
+               <PasswordField fx:id="oldPasswordValue" />
+               <PasswordField fx:id="newPasswordValue" />
+                </children>
+            </VBox>
+        </children>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
+        <children>
+            <Button mnemonicParsing="false" onAction="#onSaveUserDataButtonClick" text="Save" />
+            <Button mnemonicParsing="false" onAction="#onAbortUserDataButtonClick" text="Abort" />
+        </children></HBox>
+</VBox>

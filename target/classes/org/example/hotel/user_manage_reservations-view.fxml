@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="547.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.UserManageReservationsController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="108.0" prefWidth="678.0">
+         <children>
+            <Label text="Manging reservations" />
+            <VBox alignment="TOP_CENTER" prefHeight="91.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="600.0" spacing="20.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Persons" />
+                              <Label fx:id="personsValue" text="-" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Premium" />
+                              <Label fx:id="premiumValue" text="-" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Beginning date" />
+                              <Label fx:id="beginDateValue" text="-" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="End date" />
+                              <Label fx:id="endDateValue" text="-" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="239.0" layoutY="475.0" prefHeight="58.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" text="Accept" />
+            <Button mnemonicParsing="false" text="Reject" />
+            <Button mnemonicParsing="false" text="Finish" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="594.0" layoutY="212.0" prefHeight="81.0" prefWidth="70.0" spacing="10.0">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Floor: " />
+                  <Label fx:id="floorValue" text="-" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#IncreaseFloor" text="/\" />
+            <Button mnemonicParsing="false" onAction="#DecreaseFloor" text="\\/" />
+         </children>
+      </VBox>
+      <HBox fx:id="roomsMap" layoutX="239.0" layoutY="206.0" prefHeight="100.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

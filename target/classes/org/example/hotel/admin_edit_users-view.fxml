@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="418.0" prefWidth="761.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminEditUsersController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Hotel Systems - Hotel data" />
+   <TableView fx:id="Tabela" editable="true" prefHeight="200.0" prefWidth="200.0">
+     <columns>
+       <TableColumn fx:id="adminCol" prefWidth="75.0" text="Admin" />
+       <TableColumn fx:id="usernameCol" prefWidth="75.0" text="Username" />
+         <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+         <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Last name" />
+         <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />
+         <TableColumn fx:id="phoneCol" prefWidth="75.0" text="Phone" />
+     </columns>
+   </TableView>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+         <Button mnemonicParsing="false" onAction="#addUser" text="Add user" />
+      </children>
+   </HBox>
+
+</VBox>
