@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class UserController {
+    public String currentlyLoggedUser = "";
 
     @FXML
     Label labelID;
@@ -16,11 +17,24 @@ public class UserController {
     @FXML
     protected void onLogOutButtonClick() throws IOException {
         Stage stage_this = (Stage) labelID.getScene().getWindow();
+        currentlyLoggedUser = "";
         stage_this.close();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("app-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void onEditYourDataClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user_edit_data-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        UserEditDataController controller = fxmlLoader.getController();
+        controller.currentlyLoggedUser = this.currentlyLoggedUser;
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Systems - User account");
         stage.setScene(scene);
         stage.show();
     }

@@ -11,6 +11,7 @@ public class Database {
 
     public Database() {
         users.add(new User("admin", "admin", true));
+        users.add(new User("user", "user", false));
     }
 
     /**
@@ -41,6 +42,91 @@ public class Database {
             }
         }
         return admin;
+    }
+
+    public String GetUserName(String username) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                return user.name;
+            }
+        }
+        return "";
+    }
+
+    public String GetUserLastName(String username) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                return user.lastName;
+            }
+        }
+        return "";
+    }
+
+    public String GetUserEmail(String username) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                return user.email;
+            }
+        }
+        return "";
+    }
+
+    public String GetUserPhone(String username) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                return user.phone;
+            }
+        }
+        return "";
+    }
+
+    public String GetUserPassword(String username) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                return user.password;
+            }
+        }
+        return "";
+    }
+
+    public void SetUserName(String username, String name) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                user.name = name;
+            }
+        }
+    }
+
+    public void SetUserLastName(String username, String lastName) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                user.lastName = lastName;
+            }
+        }
+    }
+
+    public void SetUserEmail(String username, String email) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                user.email = email;
+            }
+        }
+    }
+
+    public void SetUserPhone(String username, String phone) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                user.phone = phone;
+            }
+        }
+    }
+
+    public void SetUserPassword(String username, String password) {
+        for (User user : users) {
+            if (user.username.equals(username)) {
+                user.password = password;
+            }
+        }
     }
 }
 

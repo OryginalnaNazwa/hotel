@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class AdminController {
     Database database = new Database(); //TODO should be from file
+    public String currentlyLoggedUser = "";
 
     @FXML
     Label labelID;

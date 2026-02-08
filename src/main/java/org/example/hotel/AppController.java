@@ -46,6 +46,8 @@ public class AppController {
                 stage_this.close();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+                AdminController controller = fxmlLoader.getController();
+                controller.currentlyLoggedUser = login;
                 Stage stage = new Stage();
                 stage.setTitle("Hotel Systems - Admin access");
                 stage.setScene(scene);
@@ -55,6 +57,8 @@ public class AppController {
                 stage_this.close();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+                UserController controller = fxmlLoader.getController();
+                controller.currentlyLoggedUser = login;
                 Stage stage = new Stage();
                 stage.setTitle("Hotel Systems");
                 stage.setScene(scene);
