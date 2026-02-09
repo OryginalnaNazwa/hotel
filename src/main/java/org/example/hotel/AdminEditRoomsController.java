@@ -63,7 +63,7 @@ public class AdminEditRoomsController {
     @FXML
     protected void addRoom() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_room.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 780, 620);
         AdminEditRoomController controller = fxmlLoader.getController();
         controller.loadRoom(null);
         Stage stage = new Stage();
@@ -80,7 +80,7 @@ public class AdminEditRoomsController {
         int index = Tabela.getSelectionModel().getSelectedIndex();
         if (index >= 0) {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_room.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+            Scene scene = new Scene(fxmlLoader.load(), 780, 620);
             AdminEditRoomController controller = fxmlLoader.getController();
             controller.loadRoom(database.hotel.rooms.get(index));
             Stage stage = new Stage();
