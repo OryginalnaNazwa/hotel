@@ -1,0 +1,13 @@
+{
+    "country": "No country",
+    "baseRoomPrice": 1,
+    "floors": 2,
+    "address": "aaa",
+    "city": "No city",
+    "phone": "No phone",
+    "name": "HotelAAA",
+    "defaultPremiumMultiplier": 2,
+    "defaultRoomsPerFloor": 2,
+    "stars": 4,
+    "email": "No email"
+}

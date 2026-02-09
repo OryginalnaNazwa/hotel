@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Reservation {
-    int id;
+    Integer id;
     Integer persons;
     Date beginDate;
     Date endDate;

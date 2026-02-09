@@ -1,0 +1,20 @@
+[
+    {
+        "lastName": "No last name",
+        "password": "admin",
+        "phone": "No phone",
+        "name": "No name",
+        "admin": true,
+        "email": "No email",
+        "username": "admin"
+    },
+    {
+        "lastName": "No last name",
+        "password": "user",
+        "phone": "No phone",
+        "name": "No name",
+        "admin": false,
+        "email": "No email",
+        "username": "user"
+    }
+]

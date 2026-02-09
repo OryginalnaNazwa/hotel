@@ -1,0 +1,56 @@
+[
+    {
+        "number": "1",
+        "premium": false,
+        "reservations": [],
+        "price": 1000,
+        "id": 1,
+        "floor": 1,
+        "beds": 3
+    },
+    {
+        "number": "2",
+        "premium": false,
+        "reservations": [],
+        "price": 1000,
+        "id": 2,
+        "floor": 1,
+        "beds": 3
+    },
+    {
+        "number": "3",
+        "premium": false,
+        "reservations": [],
+        "price": 3,
+        "id": 3,
+        "floor": 1,
+        "beds": 3
+    },
+    {
+        "number": "4",
+        "premium": false,
+        "reservations": [],
+        "price": 2,
+        "id": 4,
+        "floor": 1,
+        "beds": 2
+    },
+    {
+        "number": "1",
+        "premium": true,
+        "reservations": [],
+        "price": 2000,
+        "id": 5,
+        "floor": 2,
+        "beds": 1
+    },
+    {
+        "number": "1",
+        "premium": true,
+        "reservations": [],
+        "price": 4,
+        "id": 6,
+        "floor": 2,
+        "beds": 2
+    }
+]

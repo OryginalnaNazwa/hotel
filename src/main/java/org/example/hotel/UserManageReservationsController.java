@@ -12,6 +12,8 @@ import java.util.Objects;
 
 public class UserManageReservationsController {
     @FXML
+    private Label idValue;
+    @FXML
     private Label personsValue;
     @FXML
     private Label premiumValue;
@@ -23,6 +25,8 @@ public class UserManageReservationsController {
     private Label floorValue;
     @FXML
     private HBox roomsMap;
+    @FXML
+    private Label roomInfo;
 
     Integer currentFloor = 1;
     public String currentlyLoggedUser = "";
@@ -36,18 +40,37 @@ public class UserManageReservationsController {
         MapRawFloor();
     }
 
+    /**
+     * Loads a new reservation.
+     */
     public void GetReservations() {
-        personsValue.setText(currentlyLoggedUser);
         for (Reservation reservation : database.reservations) {
-            if (Objects.equals(reservation.workerResponsible, currentlyLoggedUser)) {
+            if (Objects.equals(reservation.workerResponsible, currentlyLoggedUser) && reservation.reserved == 0) {
                 currentReservation = reservation;
                 DoReservation();
-                break;
+                return;
             }
         }
+        CleanUp();
+
     }
+
+    /**
+     * Resets the view to default.
+     */
+    private void CleanUp() {
+        idValue.setText("-");
+        personsValue.setText("-");
+        premiumValue.setText("-");
+        beginDateValue.setText("-");
+        endDateValue.setText("-");
+        currentReservation = null;
+        MapFloor();
+    }
+
     private void DoReservation() {
         MapFloor();
+        idValue.setText(currentReservation.id.toString());
         personsValue.setText(currentReservation.persons.toString());
         if (currentReservation.premium) {
             premiumValue.setText("Yes");
@@ -91,10 +114,16 @@ public class UserManageReservationsController {
                 }
                 final Room clickedRoom = room; // Need final for lambda
                 aRoom.setOnMouseClicked(event -> {
-                    onRoomClick(clickedRoom);
+                    selectedRoom = clickedRoom;
+                    showRoomInfo(clickedRoom);
+                    MapFloor();
                 });
                 aRoom.setStroke(Color.BLACK);
-                aRoom.setStrokeWidth(2);
+                if (selectedRoom != null && room.id == selectedRoom.id) {
+                    aRoom.setStrokeWidth(5);
+                } else {
+                    aRoom.setStrokeWidth(2);
+                }
 
                 roomsMap.getChildren().add(aRoom);
             }
@@ -109,12 +138,15 @@ public class UserManageReservationsController {
     private boolean ReservationDateCheck(Room room) {
         for (Reservation reservation : room.reservations) {
             if (reservation.id != currentReservation.id) {
-                if (reservation.endDate.compareTo(currentReservation.beginDate) > 0 && reservation.beginDate.compareTo(currentReservation.beginDate) > 0) {
-                    return false;
+                // Check if dates overlap
+                // Overlap occurs if: new start < existing end AND new end > existing start
+                if (currentReservation.beginDate.compareTo(reservation.endDate) < 0 &&
+                        currentReservation.endDate.compareTo(reservation.beginDate) > 0) {
+                    return false; // Dates overlap - room not available
                 }
             }
         }
-        return true;
+        return true; // No overlaps - room is available
     }
 
     /**
@@ -216,20 +248,46 @@ public class UserManageReservationsController {
 
     @FXML
     void onAcceptClick() {
-        if (currentReservation != null) {
+        if (currentReservation != null && selectedRoom != null) {
+            if (CheckRoom(selectedRoom) == -1) {
+                return;
+            }
             currentReservation.reserved = 1;
             for (Reservation reservation : database.reservations) {
                 if (reservation.id == currentReservation.id) {
                     reservation.reserved = currentReservation.reserved;
                 }
             }
+            selectedRoom.reservations.add(currentReservation);
             FileOperations.saveReservations(database.reservations);
+            FileOperations.saveRooms(database.hotel.rooms);
             GetReservations();
         }
     }
 
-    @FXML
-    void onRoomClick(Room room) {
+    private void showRoomInfo(Room room) {
+        int roomCheck = CheckRoom(room);
+        String info = "Room " + room.number + " - Floor " + room.floor + "\n";
+        info += "Beds: " + room.beds + "\n";
+        info += "Premium: " + (room.premium ? "Yes" : "No") + "\n";
 
+        switch (roomCheck) {
+            case -1:
+                info += "Status: NOT SUITABLE\n";
+                if (room.beds < currentReservation.persons) {
+                    info += "Reason: Not enough beds";
+                } else {
+                    info += "Reason: Already booked for these dates";
+                }
+                break;
+            case 0:
+                info += "Status: ACCEPTABLE (not ideal match)";
+                break;
+            case 1:
+                info += "Status: PERFECT MATCH";
+                break;
+        }
+
+        roomInfo.setText(info);
     }
 }
