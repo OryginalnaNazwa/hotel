@@ -1,9 +1,7 @@
 package org.example.hotel;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import static java.lang.Float.parseFloat;
@@ -12,6 +10,16 @@ import static java.lang.Float.parseFloat;
  * Window to edit basic information about the user currently logged in.
  */
 public class UserEditDataController {
+    public Label emailLabel;
+    public Label nameLabel;
+    public Label lastNameLabel;
+    public Label welcomeLabel;
+    public Label phoneLabel;
+    public Label passwordLabel;
+    public Label newPasswordLabel;
+    public Button saveButton;
+    public Button abortButton;
+
     Database database = new Database();
     public String currentlyLoggedUser = "";
 
@@ -33,6 +41,16 @@ public class UserEditDataController {
         lastNameValue.setText(database.GetUserLastName(currentlyLoggedUser));
         emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
         phoneValue.setText(database.GetUserPhone(currentlyLoggedUser));
+
+        emailLabel.setText(Language.get("email"));
+        phoneLabel.setText(Language.get("phone"));
+        nameLabel.setText(Language.get("name"));
+        lastNameLabel.setText(Language.get("lastName"));
+        passwordLabel.setText(Language.get("change_password"));
+        newPasswordLabel.setText(Language.get("new_password"));
+        welcomeLabel.setText(Language.get("user_account"));
+        saveButton.setText(Language.get("save"));
+        abortButton.setText(Language.get("abort"));
     }
 
 

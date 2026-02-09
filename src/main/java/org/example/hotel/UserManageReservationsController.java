@@ -1,6 +1,7 @@
 package org.example.hotel;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -11,6 +12,15 @@ import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class UserManageReservationsController {
+    public Label topLabel;
+    public Label personsLabel;
+    public Label premiumLabel;
+    public Label beginDateLabel;
+    public Label endDateLabel;
+    public Label floorLabel;
+    public Button acceptButton;
+    public Button rejectButton;
+    public Button finishButton;
     @FXML
     private Label idValue;
     @FXML
@@ -36,6 +46,16 @@ public class UserManageReservationsController {
 
     @FXML
     void initialize() {
+        topLabel.setText(Language.get("managing_reservations"));
+        personsLabel.setText(Language.get("persons"));
+        premiumLabel.setText(Language.get("premium"));
+        beginDateLabel.setText(Language.get("begin_date"));
+        endDateLabel.setText(Language.get("end_date"));
+        floorLabel.setText(Language.get("floor"));
+        acceptButton.setText(Language.get("accept"));
+        rejectButton.setText(Language.get("reject"));
+        finishButton.setText(Language.get("finish"));
+
         floorValue.setText(currentFloor.toString());
         MapRawFloor();
     }
@@ -73,9 +93,9 @@ public class UserManageReservationsController {
         idValue.setText(currentReservation.id.toString());
         personsValue.setText(currentReservation.persons.toString());
         if (currentReservation.premium) {
-            premiumValue.setText("Yes");
+            premiumValue.setText(Language.get("yes"));
         } else  {
-            premiumValue.setText("No");
+            premiumValue.setText(Language.get("no"));
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         beginDateValue.setText(dateFormat.format(currentReservation.beginDate));
@@ -118,11 +138,12 @@ public class UserManageReservationsController {
                     showRoomInfo(clickedRoom);
                     MapFloor();
                 });
-                aRoom.setStroke(Color.BLACK);
                 if (selectedRoom != null && room.id == selectedRoom.id) {
                     aRoom.setStrokeWidth(5);
+                    aRoom.setStroke(Color.GREY);
                 } else {
                     aRoom.setStrokeWidth(2);
+                    aRoom.setStroke(Color.BLACK);
                 }
 
                 roomsMap.getChildren().add(aRoom);
@@ -267,24 +288,25 @@ public class UserManageReservationsController {
 
     private void showRoomInfo(Room room) {
         int roomCheck = CheckRoom(room);
-        String info = "Room " + room.number + " - Floor " + room.floor + "\n";
-        info += "Beds: " + room.beds + "\n";
-        info += "Premium: " + (room.premium ? "Yes" : "No") + "\n";
+        String info = Language.get("room") + " " + room.number + " - " + Language.get("floor") + room.floor + "\n";
+        info += Language.get("beds") + ": " + room.beds + "\n";
+        info += Language.get("premium") + (room.premium ? Language.get("yes") : Language.get("no")) + "\n";
+        info += Language.get("status") + ": ";
 
         switch (roomCheck) {
             case -1:
-                info += "Status: NOT SUITABLE\n";
+                info += Language.get("not_suitable") + "\n";
                 if (room.beds < currentReservation.persons) {
-                    info += "Reason: Not enough beds";
+                    info += Language.get("few_beds");
                 } else {
-                    info += "Reason: Already booked for these dates";
+                    info += Language.get("booked");
                 }
                 break;
             case 0:
-                info += "Status: ACCEPTABLE (not ideal match)";
+                info += Language.get("acceptable");
                 break;
             case 1:
-                info += "Status: PERFECT MATCH";
+                info += Language.get("perfect");
                 break;
         }
 

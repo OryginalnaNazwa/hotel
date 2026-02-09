@@ -1,9 +1,7 @@
 package org.example.hotel;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import static java.lang.Float.parseFloat;
@@ -12,6 +10,13 @@ import static java.lang.Float.parseFloat;
  * Window to edit basic information about the hotel.
  */
 public class AdminEditDataController {
+    public Label hotelName;
+    public Label hotelAddress;
+    public Label hotelStars;
+    public Label hotelFloors;
+    public Label hotelPremium;
+    public Button saveButton;
+    public Button abortButton;
     Database database = new Database();
 
     @FXML
@@ -26,6 +31,14 @@ public class AdminEditDataController {
     Spinner<Integer> hotelFloorsValue;
 
     public void initialize() {
+        saveButton.setText(Language.get("save"));
+        abortButton.setText(Language.get("abort"));
+        hotelName.setText(Language.get("hotel_name"));
+        hotelAddress.setText(Language.get("hotel_address"));
+        hotelStars.setText(Language.get("hotel_stars"));
+        hotelFloors.setText(Language.get("floors"));
+        hotelPremium.setText(Language.get("hotel_premium"));
+
         hotelNameValue.setText(database.hotel.name);
         hotelAddressValue.setText(database.hotel.address);
         hotelMultiplierValue.setText(database.hotel.defaultPremiumMultiplier.toString());

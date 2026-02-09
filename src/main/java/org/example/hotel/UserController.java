@@ -3,6 +3,7 @@ package org.example.hotel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -13,6 +14,22 @@ public class UserController {
 
     @FXML
     Label labelID;
+    @FXML
+    Button makeReservationsButton;
+    @FXML
+    Button editDataButton;
+    @FXML
+    Button logOutButton;
+    @FXML
+    Button settingsButton;
+
+    @FXML
+    void initialize() {
+        makeReservationsButton.setText(Language.get("make_reservations"));
+        editDataButton.setText(Language.get("edit_data"));
+        logOutButton.setText(Language.get("logout"));
+        settingsButton.setText(Language.get("settings"));
+    }
 
     @FXML
     protected void onLogOutButtonClick() throws IOException {
@@ -34,7 +51,7 @@ public class UserController {
         UserEditDataController controller = fxmlLoader.getController();
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
         Stage stage = new Stage();
-        stage.setTitle("Hotel Systems - User account");
+        stage.setTitle("Hotel Systems - " + Language.get("user_account"));
         stage.setScene(scene);
         stage.show();
     }
@@ -47,7 +64,17 @@ public class UserController {
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
         controller.GetReservations();
         Stage stage = new Stage();
-        stage.setTitle("Hotel Systems - Manage Reservations");
+        stage.setTitle("Hotel Systems - " + Language.get("manage_reservations"));
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void onSettingsButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Stage stage = new Stage();
+        stage.setTitle(Language.get("settings"));
         stage.setScene(scene);
         stage.show();
     }

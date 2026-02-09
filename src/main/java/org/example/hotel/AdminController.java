@@ -3,6 +3,7 @@ package org.example.hotel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -12,11 +13,26 @@ import java.io.IOException;
  * Root admin view window. User can then choose whether to edit hotel data or edit users.
  */
 public class AdminController {
+
+
+    public Button editDataButton;
+    public Button manageUsersButton;
+    public Button logOutButton;
+    public Button settingsButton;
     Database database = new Database();
     public String currentlyLoggedUser = "";
 
     @FXML
     Label labelID;
+
+    @FXML
+    void initialize() {
+        editDataButton.setText(Language.get("edit_hotel_data"));
+        manageUsersButton.setText(Language.get("manage_users"));
+        logOutButton.setText(Language.get("logout"));
+        labelID.setText(Language.get("admin_view"));
+        settingsButton.setText(Language.get("settings"));
+    }
 
     /**
      * Opens editing hotel data window.
@@ -27,7 +43,7 @@ public class AdminController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_data-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 480, 320);
         Stage stage = new Stage();
-        stage.setTitle("Hotel Systems - Admin access");
+        stage.setTitle("Hotel Systems - Hotel");
         stage.setScene(scene);
         stage.show();
     }
@@ -41,7 +57,7 @@ public class AdminController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_users-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 480, 320);
         Stage stage = new Stage();
-        stage.setTitle("Hotel Systems - Admin access");
+        stage.setTitle("Hotel Systems");
         stage.setScene(scene);
         stage.setOnHiding(event -> {
             AdminEditUsersController controller = fxmlLoader.getController();
@@ -62,6 +78,16 @@ public class AdminController {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void onSettingsButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Stage stage = new Stage();
+        stage.setTitle(Language.get("settings"));
         stage.setScene(scene);
         stage.show();
     }

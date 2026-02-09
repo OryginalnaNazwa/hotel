@@ -3,6 +3,7 @@ package org.example.hotel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -25,10 +26,23 @@ public class AppController {
     private TextField usernameArea;
     @FXML
     private PasswordField passwordArea;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button settingsButton;
+
+    @FXML
+    void initialize() {
+        FileOperations.loadConfig();
+        passwordArea.setPromptText(Language.get("password"));
+        systemText.setText(Language.get("system_welcome"));
+        loginButton.setText(Language.get("login"));
+        settingsButton.setText(Language.get("settings"));
+    }
 
     /**
-     * @brief Handles logging in.
-     * @details Handles incorrect login. Opens admin view if user is an admin, normal otherwise.
+     * Handles logging in.
+     * Handles incorrect login. Opens admin view if user is an admin, normal otherwise.
      * @throws IOException
      */
     @FXML
@@ -49,7 +63,7 @@ public class AppController {
                 AdminController controller = fxmlLoader.getController();
                 controller.currentlyLoggedUser = login;
                 Stage stage = new Stage();
-                stage.setTitle("Hotel Systems - Admin access");
+                stage.setTitle("Hotel Systems - " + Language.get("admin_access"));
                 stage.setScene(scene);
                 stage.show();
             } else {
@@ -68,7 +82,7 @@ public class AppController {
             usernameArea.clear();
             passwordArea.clear();
 
-            systemText.setText("Invalid username or password");
+            systemText.setText(Language.get("system_invalid"));
         }
     }
 
@@ -82,6 +96,16 @@ public class AppController {
         if (event.getCode() == KeyCode.ENTER) {
             onLoginButtonClick();
         }
+    }
+
+    @FXML
+    protected void onSettingsButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Stage stage = new Stage();
+        stage.setTitle(Language.get("settings"));
+        stage.setScene(scene);
+        stage.show();
     }
 }
 

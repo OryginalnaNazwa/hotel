@@ -9,16 +9,16 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label text="Hotel Systems - Hotel data" />
+    <Label text="Hotel Systems" />
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
       <children>
          <VBox alignment="CENTER" prefHeight="170.0" prefWidth="232.0" spacing="20.0">
             <children>
-               <Label text="Hotel name" />
-                <Label text="Hotel addres" />
-                <Label text="Stars" />
-               <Label text="Floors" />
-               <Label text="Default multiplier for premium rooms" />
+               <Label text="Hotel name" fx:id="hotelName" />
+                <Label text="Hotel address" fx:id="hotelAddress" />
+                <Label text="Stars" fx:id="hotelStars" />
+               <Label text="Floors" fx:id="hotelFloors"/>
+               <Label text="Default multiplier for premium rooms" fx:id="hotelPremium"/>
             </children>
          </VBox>
          <VBox alignment="CENTER" prefHeight="170.0" prefWidth="305.0" spacing="10.0">
@@ -34,7 +34,7 @@
    </HBox>
     <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
         <children>
-            <Button mnemonicParsing="false" onAction="#onSaveHotelDataButtonClick" text="Save" />
-            <Button mnemonicParsing="false" onAction="#onAbortHotelDataButtonClick" text="Abort" />
+            <Button mnemonicParsing="false" onAction="#onSaveHotelDataButtonClick" text="Save" fx:id="saveButton" />
+            <Button mnemonicParsing="false" onAction="#onAbortHotelDataButtonClick" text="Abort" fx:id="abortButton"/>
         </children></HBox>
 </VBox>

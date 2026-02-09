@@ -9,17 +9,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label text="Your account" />
+    <Label fx:id="welcomeLabel" text="Your account" />
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
         <children>
             <VBox alignment="CENTER" prefHeight="170.0" prefWidth="232.0" spacing="20.0">
                 <children>
-                    <Label text="Name" />
-                    <Label text="Last name" />
-                    <Label text="Email" />
-                    <Label text="Phone" />
-                    <Label text="Change password   Old password" />
-               <Label text="New password" />
+                    <Label fx:id="nameLabel" text="Name" />
+                    <Label fx:id="lastNameLabel" text="Last name" />
+                    <Label fx:id="emailLabel" text="Email" />
+                    <Label fx:id="phoneLabel" text="Phone" />
+                    <Label fx:id="passwordLabel" text="Change password   Old password" />
+               <Label fx:id="newPasswordLabel" text="New password" />
                 </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="170.0" prefWidth="305.0" spacing="10.0">
@@ -36,7 +36,7 @@
     </HBox>
     <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
         <children>
-            <Button mnemonicParsing="false" onAction="#onSaveUserDataButtonClick" text="Save" />
-            <Button mnemonicParsing="false" onAction="#onAbortUserDataButtonClick" text="Abort" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveUserDataButtonClick" text="Save" />
+            <Button fx:id="abortButton" mnemonicParsing="false" onAction="#onAbortUserDataButtonClick" text="Abort" />
         </children></HBox>
 </VBox>

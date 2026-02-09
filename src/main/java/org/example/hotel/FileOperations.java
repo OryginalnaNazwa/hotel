@@ -155,4 +155,18 @@ public class FileOperations {
 
         FileOperations.saveToFile(jsonArray, filename);
     }
+
+    public static void saveConfig() {
+        JSONObject jsonConfig = new JSONObject();
+        jsonConfig.put("language", Language.getCurrentLanguage());
+        FileOperations.saveToFile(jsonConfig, "config.json");
+    }
+
+    public static void loadConfig() {
+        String filename = "config.json";
+        JSONObject jsonObject = FileOperations.loadObject(filename);
+        if (jsonObject != null) {
+            Language.loadLanguage(jsonObject.optString("language", "en"));
+        }
+    }
 }

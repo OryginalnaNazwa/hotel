@@ -12,8 +12,9 @@
     <Label fx:id="labelID" text="Hotel Systems" />
     <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
         <children>
-            <Button mnemonicParsing="false" onAction="#onMangageReservationsClick" text="Make reservations" />
-            <Button mnemonicParsing="false" onAction="#onEditYourDataClick" prefHeight="25.0" prefWidth="118.0" text="Edit your data" />
-            <Button mnemonicParsing="false" onAction="#onLogOutButtonClick" text="Log out" />
+            <Button fx:id="makeReservationsButton" mnemonicParsing="false" onAction="#onMangageReservationsClick" text="Make reservations" />
+            <Button fx:id="editDataButton" mnemonicParsing="false" onAction="#onEditYourDataClick" prefHeight="25.0" prefWidth="118.0" text="Edit your data" />
+            <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOutButtonClick" text="Log out" />
         </children></HBox>
+   <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingsButtonClick" text="Settings" />
 </VBox>
