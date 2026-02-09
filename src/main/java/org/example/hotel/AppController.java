@@ -101,7 +101,7 @@ public class AppController {
     @FXML
     protected void onSettingsButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 780, 620);
         Stage stage = new Stage();
         stage.setTitle(Language.get("settings"));
         stage.setScene(scene);

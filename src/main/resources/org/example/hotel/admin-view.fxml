@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="269.0" prefWidth="325.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminController">
+<VBox alignment="CENTER" prefHeight="356.0" prefWidth="420.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -12,9 +12,14 @@
     <Label fx:id="labelID" text="Hotel Systems Admin View" />
    <HBox alignment="CENTER" prefHeight="47.0" prefWidth="286.0" spacing="20.0">
       <children>
-         <Button mnemonicParsing="false" onAction="#onEditHotelDataButtonClick" fx:id="editDataButton" text="Edit hotel data" />
-         <Button mnemonicParsing="false" onAction="#onManageUsersButtonClick" fx:id="manageUsersButton" text="Manage users" />
-         <Button mnemonicParsing="false" onAction="#onLogOutButtonClick" fx:id="logOutButton" text="Log out" />
+         <Button fx:id="editDataButton" mnemonicParsing="false" onAction="#onEditHotelDataButtonClick" text="Edit hotel data" />
+         <Button fx:id="editRoomsButton" mnemonicParsing="false" onAction="#onEditRoomsButtonClick" text="Edit rooms" />
+         <Button fx:id="manageUsersButton" mnemonicParsing="false" onAction="#onManageUsersButtonClick" text="Manage users" />
       </children></HBox>
-    <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" fx:id="settingsButton" text="Settings" />
+   <HBox alignment="TOP_CENTER" prefHeight="68.0" prefWidth="380.0" spacing="20.0">
+      <children>
+          <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingsButtonClick" text="Settings" />
+         <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOutButtonClick" text="Log out" />
+      </children>
+   </HBox>
 </VBox>

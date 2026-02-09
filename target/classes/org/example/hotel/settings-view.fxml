@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.SettingsController">
    <children>
-      <Label fx:id="settingsLabel" layoutX="286.0" layoutY="14.0" text="Settings" />
-      <VBox alignment="CENTER" layoutX="-1.0" layoutY="42.0" prefHeight="181.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="-3.0" prefHeight="152.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <Label fx:id="settingsLabel" text="Settings" />
+            <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <Label fx:id="languageLabel" text="Language" />
                    <ChoiceBox fx:id="languageChoice">
                        <items>
                            <FXCollections fx:factory="observableArrayList">
-                               <String fx:value="English"/>
-                               <String fx:value="Polski"/>
+                               <String fx:value="English" />
+                               <String fx:value="Polski" />
                            </FXCollections>
                        </items>
                    </ChoiceBox>
@@ -28,17 +27,16 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-                     <children>
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save" />
-                        <Button fx:id="rejectButton" mnemonicParsing="false" onAction="#onRejectButtonClick" text="Button" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
       </VBox>
+      <HBox alignment="CENTER" layoutX="4.0" layoutY="330.0" prefHeight="57.0" prefWidth="585.0" spacing="20.0">
+         <children>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save" />
+            <Button fx:id="rejectButton" mnemonicParsing="false" onAction="#onRejectButtonClick" text="Button" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

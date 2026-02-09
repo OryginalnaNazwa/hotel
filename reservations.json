@@ -2,7 +2,7 @@
     {
         "persons": 3,
         "premium": false,
-        "reserved": 0,
+        "reserved": 1,
         "beginDay": 4,
         "endDay": 8,
         "beginYear": 2026,
@@ -15,7 +15,7 @@
     {
         "persons": 3,
         "premium": false,
-        "reserved": 0,
+        "reserved": 1,
         "beginDay": 4,
         "endDay": 20,
         "beginYear": 2026,
@@ -28,7 +28,7 @@
     {
         "persons": 2,
         "premium": true,
-        "reserved": 0,
+        "reserved": 1,
         "beginDay": 10,
         "endDay": 15,
         "beginYear": 2026,
@@ -54,7 +54,7 @@
     {
         "persons": 4,
         "premium": true,
-        "reserved": 0,
+        "reserved": -1,
         "beginDay": 1,
         "endDay": 10,
         "beginYear": 2026,
@@ -67,7 +67,7 @@
     {
         "persons": 2,
         "premium": false,
-        "reserved": 0,
+        "reserved": 1,
         "beginDay": 15,
         "endDay": 22,
         "beginYear": 2026,
@@ -80,7 +80,7 @@
     {
         "persons": 3,
         "premium": true,
-        "reserved": 0,
+        "reserved": 1,
         "beginDay": 25,
         "endDay": 5,
         "beginYear": 2026,

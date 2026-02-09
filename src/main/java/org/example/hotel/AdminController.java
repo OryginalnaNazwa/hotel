@@ -1,5 +1,6 @@
 package org.example.hotel;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ public class AdminController {
     public Button manageUsersButton;
     public Button logOutButton;
     public Button settingsButton;
+    public Button editRoomsButton;
     Database database = new Database();
     public String currentlyLoggedUser = "";
 
@@ -32,6 +34,7 @@ public class AdminController {
         logOutButton.setText(Language.get("logout"));
         labelID.setText(Language.get("admin_view"));
         settingsButton.setText(Language.get("settings"));
+        editRoomsButton.setText(Language.get("edit_rooms"));
     }
 
     /**
@@ -55,14 +58,10 @@ public class AdminController {
     @FXML
     protected void onManageUsersButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_users-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 780, 620);
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems");
         stage.setScene(scene);
-        stage.setOnHiding(event -> {
-            AdminEditUsersController controller = fxmlLoader.getController();
-            controller.SaveToDatabase(database);
-        });
         stage.show();
     }
 
@@ -85,9 +84,18 @@ public class AdminController {
     @FXML
     protected void onSettingsButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 480, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 780, 620);
         Stage stage = new Stage();
         stage.setTitle(Language.get("settings"));
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onEditRoomsButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_rooms-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 780, 620);
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Systems");
         stage.setScene(scene);
         stage.show();
     }

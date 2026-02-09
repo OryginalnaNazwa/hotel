@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="418.0" prefWidth="761.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminEditRoomsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Hotel Systems" />
+    <TableView fx:id="Tabela" editable="true" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+            <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="numberCol" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="floorCol" prefWidth="75.0" text="Floor" />
+            <TableColumn fx:id="bedsCol" prefWidth="75.0" text="Beds" />
+            <TableColumn fx:id="premiumCol" prefWidth="75.0" text="Premium" />
+            <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
+        </columns>
+    </TableView>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+        <children>
+            <Button fx:id="addRoomButton" mnemonicParsing="false" onAction="#addRoom" text="Add room" />
+         <Button fx:id="editRoomButton" mnemonicParsing="false" onAction="#onEditRoomButtonClick" text="Edit room" />
+         <Button fx:id="deleteRoomButton" mnemonicParsing="false" onAction="#onDeleteRoomButtonClick" text="Delete room" />
+        </children>
+    </HBox>
+   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+         <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save" />
+         <Button fx:id="abortButton" mnemonicParsing="false" onAction="#onAbortButtonClick" text="Abort" />
+      </children>
+   </HBox>
+
+</VBox>

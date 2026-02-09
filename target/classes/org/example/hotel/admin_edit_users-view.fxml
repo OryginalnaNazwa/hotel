@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="418.0" prefWidth="761.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminEditUsersController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-
-    <Label text="Hotel Systems" />
-   <TableView fx:id="Tabela" editable="true" prefHeight="200.0" prefWidth="200.0">
-     <columns>
-       <TableColumn fx:id="adminCol" prefWidth="75.0" text="Admin" />
-       <TableColumn fx:id="usernameCol" prefWidth="75.0" text="Username" />
-         <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
-         <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Last name" />
-         <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />
-         <TableColumn fx:id="phoneCol" prefWidth="75.0" text="Phone" />
-     </columns>
-   </TableView>
-   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-      <children>
-         <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" text="Add user" />
-      </children>
-   </HBox>
-
-</VBox>
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hotel.AdminEditUsersController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="700.0" spacing="10.0">
+            <children>
+                <TableView fx:id="Tabela" prefHeight="300.0" prefWidth="700.0">
+                    <columns>
+                        <TableColumn fx:id="usernameCol" prefWidth="100.0" text="Username" />
+                        <TableColumn fx:id="nameCol" prefWidth="100.0" text="Name" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="100.0" text="Last Name" />
+                        <TableColumn fx:id="adminCol" prefWidth="75.0" text="Admin" />
+                        <TableColumn fx:id="emailCol" prefWidth="150.0" text="Email" />
+                        <TableColumn fx:id="phoneCol" prefWidth="120.0" text="Phone" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Button fx:id="addUserButton" onAction="#addUser" text="Add User" />
+                        <Button fx:id="editUserButton" onAction="#onEditUserButtonClick" text="Edit User" />
+                        <Button fx:id="deleteUserButton" onAction="#onDeleteUserButtonClick" text="Delete User" />
+                        <Button fx:id="saveButton" onAction="#onSaveButtonClick" text="Save" />
+                        <Button fx:id="abortButton" onAction="#onAbortButtonClick" text="Abort" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

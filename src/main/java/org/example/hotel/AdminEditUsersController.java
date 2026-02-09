@@ -1,31 +1,36 @@
 package org.example.hotel;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
- * Admin only window of viewing and editing user data.
+ * Admin only window of viewing and editing user data in a table.
  */
 public class AdminEditUsersController {
     public Button addUserButton;
+    public Button editUserButton;
+    public Button deleteUserButton;
+    public Button saveButton;
+    public Button abortButton;
     Database database = new Database();
 
     @FXML
-    private TableView Tabela;
-    @FXML private TableColumn<User, Boolean> adminCol;
+    private TableView<User> Tabela;
     @FXML private TableColumn<User, String> usernameCol;
     @FXML private TableColumn<User, String> nameCol;
     @FXML private TableColumn<User, String> lastNameCol;
+    @FXML private TableColumn<User, Boolean> adminCol;
     @FXML private TableColumn<User, String> emailCol;
     @FXML private TableColumn<User, String> phoneCol;
-    //@FXML private TableColumn<User, String> wypozyczaczCol;
 
     @FXML
     public void initialize(){
@@ -36,43 +41,77 @@ public class AdminEditUsersController {
         emailCol.setText(Language.get("email"));
         phoneCol.setText(Language.get("phone"));
         addUserButton.setText(Language.get("add_user"));
+        deleteUserButton.setText(Language.get("delete_user"));
+        saveButton.setText(Language.get("save"));
+        abortButton.setText(Language.get("abort"));
+        editUserButton.setText(Language.get("edit_user"));
 
-        usernameCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
+        usernameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        nameCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
-        lastNameCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
-
-        adminCol.setCellValueFactory(new PropertyValueFactory<>("admin"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        //wypozyczaczCol.setCellValueFactory(new PropertyValueFactory<>("wypozyczacz"));
-        //usernameCol.setCellFactory(new Ca);
+        adminCol.setCellValueFactory(new PropertyValueFactory<>("admin"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
         Tabela.setItems(database.users);
     }
 
     @FXML
-    protected void setFieldUsername(String username){
-
+    protected void addUser() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_user-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 700, 600);
+        AdminEditUserController controller = fxmlLoader.getController();
+        controller.loadUser(null);
+        Stage stage = new Stage();
+        stage.setTitle(Language.get("add_user"));
+        stage.setScene(scene);
+        stage.setOnHiding(event -> {
+            Tabela.refresh();
+        });
+        stage.show();
     }
 
-    /**
-     * @brief Adds new user.
-     * @details New user has username "user", password "user" and is not an admin. Change these immediately with edit users.
-     */
     @FXML
-    protected void addUser(){
-        database.users.add(new User("user","user", false));
-        Tabela.setItems(database.users);
-        Tabela.setEditable(true);
+    public void onEditUserButtonClick() throws IOException {
+        int index = Tabela.getSelectionModel().getSelectedIndex();
+        if (index >= 0) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_user-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 600);
+            AdminEditUserController controller = fxmlLoader.getController();
+            controller.loadUser(database.users.get(index));
+            Stage stage = new Stage();
+            stage.setTitle(Language.get("edit_data"));
+            stage.setScene(scene);
+            stage.setOnHiding(event -> {
+                Tabela.refresh();
+            });
+            stage.show();
+        }
     }
 
-    public void SaveToDatabase(Database database_out) {
-        database_out.users.clear();
-        database_out.users.addAll(Tabela.getSelectionModel().getSelectedItems());
+    @FXML
+    public void onDeleteUserButtonClick()  {
+        int index = Tabela.getSelectionModel().getSelectedIndex();
+        if (index >= 0) {
+            database.users.remove(Tabela.getItems().get(index));
+            Tabela.refresh();
+        }
+    }
+
+    @FXML
+    public void onSaveButtonClick() {
+        FileOperations.saveUsers(database.users);
+        Stage stage_this = (Stage) addUserButton.getScene().getWindow();
+        stage_this.close();
+    }
+
+    @FXML
+    public void onAbortButtonClick() {
+        Stage stage_this = (Stage) addUserButton.getScene().getWindow();
+        stage_this.close();
     }
 }

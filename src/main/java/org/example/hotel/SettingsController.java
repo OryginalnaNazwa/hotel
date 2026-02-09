@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class SettingsController {
 
@@ -22,16 +23,33 @@ public class SettingsController {
         saveButton.setText(Language.get("save"));
         rejectButton.setText(Language.get("abort"));
 
-        languageChoice.setValue(Language.get("language"));
+        if (Language.getCurrentLanguage().equals("en")) {
+            languageChoice.setValue("English");
+        } else if (Language.getCurrentLanguage().equals("pl")) {
+            languageChoice.setValue("Polski");
+        } else {
+            languageChoice.setValue("No language");
+        }
+
     }
 
     @FXML
     public void onSaveButtonClick(ActionEvent actionEvent) {
-
+        if (languageChoice.getValue().equals("English")) {
+            Language.currentLanguage = "en";
+        }  else if (languageChoice.getValue().equals("Polski")) {
+            Language.currentLanguage = "pl";
+        } else  {
+            Language.currentLanguage = "en";
+        }
+        FileOperations.saveConfig();
+        Stage stage_this = (Stage) settingsLabel.getScene().getWindow();
+        stage_this.close();
     }
 
     @FXML
     public void onRejectButtonClick(ActionEvent actionEvent) {
-
+        Stage stage_this = (Stage) settingsLabel.getScene().getWindow();
+        stage_this.close();
     }
 }

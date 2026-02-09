@@ -53,6 +53,54 @@ public class Room {
 
     public Room() {}
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+
+    public int getBeds() {
+        return beds;
+    }
+
+    public void setBeds(int beds) {
+        this.beds = beds;
+    }
+
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
         json.put("id", id);

@@ -2,7 +2,34 @@
     {
         "number": "1",
         "premium": false,
-        "reservations": [],
+        "reservations": [
+            {
+                "persons": 3,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 4,
+                "endDay": 8,
+                "beginYear": 2026,
+                "id": 1,
+                "endMonth": 6,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            },
+            {
+                "persons": 3,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 4,
+                "endDay": 8,
+                "beginYear": 2026,
+                "id": 1,
+                "endMonth": 6,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            }
+        ],
         "price": 1000,
         "id": 1,
         "floor": 1,
@@ -11,7 +38,34 @@
     {
         "number": "2",
         "premium": false,
-        "reservations": [],
+        "reservations": [
+            {
+                "persons": 3,
+                "premium": true,
+                "reserved": 1,
+                "beginDay": 25,
+                "endDay": 5,
+                "beginYear": 2026,
+                "id": 7,
+                "endMonth": 7,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            },
+            {
+                "persons": 3,
+                "premium": true,
+                "reserved": 1,
+                "beginDay": 25,
+                "endDay": 5,
+                "beginYear": 2026,
+                "id": 7,
+                "endMonth": 7,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            }
+        ],
         "price": 1000,
         "id": 2,
         "floor": 1,
@@ -20,7 +74,34 @@
     {
         "number": "3",
         "premium": false,
-        "reservations": [],
+        "reservations": [
+            {
+                "persons": 3,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 4,
+                "endDay": 20,
+                "beginYear": 2026,
+                "id": 2,
+                "endMonth": 10,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            },
+            {
+                "persons": 3,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 4,
+                "endDay": 20,
+                "beginYear": 2026,
+                "id": 2,
+                "endMonth": 10,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            }
+        ],
         "price": 3,
         "id": 3,
         "floor": 1,
@@ -29,7 +110,47 @@
     {
         "number": "4",
         "premium": false,
-        "reservations": [],
+        "reservations": [
+            {
+                "persons": 2,
+                "premium": true,
+                "reserved": 1,
+                "beginDay": 10,
+                "endDay": 15,
+                "beginYear": 2026,
+                "id": 3,
+                "endMonth": 6,
+                "beginMonth": 6,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            },
+            {
+                "persons": 2,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 15,
+                "endDay": 22,
+                "beginYear": 2026,
+                "id": 6,
+                "endMonth": 10,
+                "beginMonth": 10,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            },
+            {
+                "persons": 2,
+                "premium": false,
+                "reserved": 1,
+                "beginDay": 15,
+                "endDay": 22,
+                "beginYear": 2026,
+                "id": 6,
+                "endMonth": 10,
+                "beginMonth": 10,
+                "endYear": 2026,
+                "workerResponsible": "user"
+            }
+        ],
         "price": 2,
         "id": 4,
         "floor": 1,
@@ -38,7 +159,19 @@
     {
         "number": "1",
         "premium": true,
-        "reservations": [],
+        "reservations": [{
+            "persons": 1,
+            "premium": false,
+            "reserved": 1,
+            "beginDay": 18,
+            "endDay": 25,
+            "beginYear": 2026,
+            "id": 4,
+            "endMonth": 6,
+            "beginMonth": 6,
+            "endYear": 2026,
+            "workerResponsible": "user"
+        }],
         "price": 2000,
         "id": 5,
         "floor": 2,
@@ -47,7 +180,19 @@
     {
         "number": "1",
         "premium": true,
-        "reservations": [],
+        "reservations": [{
+            "persons": 2,
+            "premium": true,
+            "reserved": 1,
+            "beginDay": 10,
+            "endDay": 15,
+            "beginYear": 2026,
+            "id": 3,
+            "endMonth": 6,
+            "beginMonth": 6,
+            "endYear": 2026,
+            "workerResponsible": "user"
+        }],
         "price": 4,
         "id": 6,
         "floor": 2,

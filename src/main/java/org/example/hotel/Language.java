@@ -1,11 +1,11 @@
 package org.example.hotel;
 
 import org.json.JSONObject;
-import java.io.InputStream;
 
-public class Language {
+public class Language
+{
     private static JSONObject translations;
-    private static String currentLanguage = "en";
+    public static String currentLanguage = "en";
 
     static {
         loadLanguage(currentLanguage);
