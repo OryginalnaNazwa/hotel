@@ -12,10 +12,12 @@ import static java.lang.Float.parseFloat;
  * Window to edit basic information about the hotel.
  */
 public class AdminEditDataController {
-    Database database = new Database(); //TODO should be from file
+    Database database = new Database();
 
     @FXML
     TextField hotelNameValue;
+    @FXML
+    TextField hotelAddressValue;
     @FXML
     TextField hotelMultiplierValue;
     @FXML
@@ -25,6 +27,7 @@ public class AdminEditDataController {
 
     public void initialize() {
         hotelNameValue.setText(database.hotel.name);
+        hotelAddressValue.setText(database.hotel.address);
         hotelMultiplierValue.setText(database.hotel.defaultPremiumMultiplier.toString());
         SpinnerValueFactory<Integer> spinnerValuefactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
         hotelStarsValue.setValueFactory(spinnerValuefactory);
@@ -43,11 +46,16 @@ public class AdminEditDataController {
     protected void onSaveHotelDataButtonClick() {
         boolean correct = true;
         hotelNameValue.setStyle("-fx-border-color: black;");
+        hotelAddressValue.setStyle("-fx-border-color: black;");
         hotelMultiplierValue.setStyle("-fx-border-color: black;");
         if (hotelNameValue.getText().isEmpty()) {
             correct = false;
             hotelNameValue.setStyle("-fx-border-color: red;");
         } else database.hotel.name = hotelNameValue.getText();
+        if (hotelAddressValue.getText().isEmpty()) {
+            correct = false;
+            hotelAddressValue.setStyle("-fx-border-color: red;");
+        } else database.hotel.address = hotelAddressValue.getText();
 
         if (parseFloat(hotelMultiplierValue.getText()) < 1.0) {
             correct = false;
@@ -57,6 +65,7 @@ public class AdminEditDataController {
         database.hotel.floors = hotelFloorsValue.getValue();
 
         if (correct) {
+            database.fileOp.saveHotel(database.hotel);
             Stage stage_this = (Stage) hotelFloorsValue.getScene().getWindow();
             stage_this.close();
         }
@@ -68,6 +77,7 @@ public class AdminEditDataController {
     @FXML
     protected void onAbortHotelDataButtonClick() {
         hotelNameValue.setText(database.hotel.name);
+        hotelAddressValue.setText(database.hotel.address);
         hotelMultiplierValue.setText(database.hotel.defaultPremiumMultiplier.toString());
         hotelStarsValue.getValueFactory().setValue(database.hotel.stars);
         hotelFloorsValue.getValueFactory().setValue(database.hotel.floors);
@@ -83,6 +93,19 @@ public class AdminEditDataController {
             hotelNameValue.setStyle("-fx-border-color: black;");
         }  else {
             hotelNameValue.setStyle("-fx-border-color: yellow;");
+        }
+    }
+
+    /**
+     * @brief Checks if the value in the field is different from the one in database.
+     * @details If it is, highlights the field with yellow outline.
+     */
+    @FXML
+    protected void HasValueChanged_Address() {
+        if (hotelAddressValue.getText().equals(database.hotel.address)) {
+            hotelAddressValue.setStyle("-fx-border-color: black;");
+        }  else {
+            hotelAddressValue.setStyle("-fx-border-color: yellow;");
         }
     }
 

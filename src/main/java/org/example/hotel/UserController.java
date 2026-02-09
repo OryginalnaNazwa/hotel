@@ -45,6 +45,7 @@ public class UserController {
         Scene scene = new Scene(fxmlLoader.load(), 720, 680);
         UserManageReservationsController controller = fxmlLoader.getController();
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
+        controller.GetReservations();
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems - Manage Reservations");
         stage.setScene(scene);

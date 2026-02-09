@@ -12,7 +12,7 @@ import static java.lang.Float.parseFloat;
  * Window to edit basic information about the user currently logged in.
  */
 public class UserEditDataController {
-    Database database = new Database(); //TODO should be from file
+    Database database = new Database();
     public String currentlyLoggedUser = "";
 
     @FXML
@@ -30,7 +30,7 @@ public class UserEditDataController {
 
     public void initialize() {
         nameValue.setText(database.GetUserName(currentlyLoggedUser));
-        lastNameValue.setText(database.GetUserName(currentlyLoggedUser));
+        lastNameValue.setText(database.GetUserLastName(currentlyLoggedUser));
         emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
         phoneValue.setText(database.GetUserPhone(currentlyLoggedUser));
     }
@@ -91,6 +91,7 @@ public class UserEditDataController {
         }
 
         if (correct) {
+            FileOperations.saveUsers(database.users);
             Stage stage_this = (Stage) nameValue.getScene().getWindow();
             stage_this.close();
         }
@@ -102,7 +103,7 @@ public class UserEditDataController {
     @FXML
     protected void onAbortUserDataButtonClick() {
         nameValue.setText(database.GetUserName(currentlyLoggedUser));
-        lastNameValue.setText(database.GetUserName(currentlyLoggedUser));
+        lastNameValue.setText(database.GetUserLastName(currentlyLoggedUser));
         emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
         phoneValue.setText(database.GetUserPhone(currentlyLoggedUser));
         oldPasswordValue.setText("");

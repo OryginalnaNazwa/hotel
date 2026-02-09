@@ -1,5 +1,7 @@
 package org.example.hotel;
 
+import org.json.JSONObject;
+
 /**
  * User
  */
@@ -72,6 +74,32 @@ public class User {
         this.username = username;
         this.password = password;
         this.admin = admin;
+    }
+
+    public User() {}
+
+    public static User fromJSON(JSONObject json) {
+        User user = new User();
+        user.username = json.getString("username");
+        user.password = json.getString("password");
+        user.admin = json.getBoolean("admin");
+        user.name = json.optString("name", "No name");
+        user.lastName = json.optString("lastName", "No last name");
+        user.email = json.optString("email", "No email");
+        user.phone = json.optString("phone", "No phone");
+        return user;
+    }
+
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("username", username);
+        json.put("password", password);
+        json.put("admin", admin);
+        json.put("name", name);
+        json.put("lastName", lastName);
+        json.put("email", email);
+        json.put("phone", phone);
+        return json;
     }
 }
 

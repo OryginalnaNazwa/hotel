@@ -12,12 +12,16 @@ import java.io.IOException;
  * Root admin view window. User can then choose whether to edit hotel data or edit users.
  */
 public class AdminController {
-    Database database = new Database(); //TODO should be from file
+    Database database = new Database();
     public String currentlyLoggedUser = "";
 
     @FXML
     Label labelID;
 
+    /**
+     * Opens editing hotel data window.
+     * @throws IOException
+     */
     @FXML
     protected void onEditHotelDataButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_data-view.fxml"));
@@ -28,6 +32,10 @@ public class AdminController {
         stage.show();
     }
 
+    /**
+     * Opens user managing window.
+     * @throws IOException
+     */
     @FXML
     protected void onManageUsersButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_users-view.fxml"));
@@ -42,6 +50,10 @@ public class AdminController {
         stage.show();
     }
 
+    /**
+     * Closes this window and opens the login screen.
+     * @throws IOException
+     */
     @FXML
     protected void onLogOutButtonClick() throws IOException {
         Stage stage_this = (Stage) labelID.getScene().getWindow();

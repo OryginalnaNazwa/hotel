@@ -3,22 +3,31 @@ package org.example.hotel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+/**
+ * @class Database
+ * A simple representation of a database through text files.
+ */
 public class Database {
+    public FileOperations fileOp = new FileOperations();
     public ObservableList<User> users = FXCollections.observableArrayList();
-    public Hotel hotel = new Hotel("HotelX", 3, 2, 2, 2, 1);
+    public Hotel hotel = new Hotel();
+    public ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
     public Database() {
-        users.add(new User("admin", "admin", true));
-        users.add(new User("user", "user", false));
+        users = FileOperations.loadUsers();
+        hotel = FileOperations.loadHotel();
+        assert hotel != null;
+        hotel.rooms = FileOperations.loadRooms();
+        hotel.UpdateRoomPrices();
+        reservations = FileOperations.loadReservations();
+        AssignReservations();
+        FileOperations.saveReservations(reservations);
 
-        hotel.AddRoom(1,"1", 1000.0F,false,3);
-        hotel.AddRoom(1,"2", 1000.0F,false,3);
-        hotel.AddRoom(1,"3", 0.0F,false,3);
-        hotel.AddRoom(1,"4", 0.0F,false,2);
-        hotel.AddRoom(2,"1", 2000.0F,true,1);
-        hotel.AddRoom(2,"1", 0.0F,true,2);
     }
 
     /**
@@ -51,6 +60,11 @@ public class Database {
         return admin;
     }
 
+    /**
+     * Gets the Name of the user.
+     * @param username which user's Name it will get.
+     * @return Name if user exists, empty string otherwise.
+     */
     public String GetUserName(String username) {
         for (User user : users) {
             if (user.username.equals(username)) {
@@ -135,5 +149,30 @@ public class Database {
             }
         }
     }
+
+    /**
+     * Assigns reservations to workers (non-admin users).
+     */
+    private void AssignReservations() {
+        Random rand = new Random();
+        List<User> workers = new ArrayList<>();
+        for (User user : users) {
+            if (!IsUserAdmin(user.username)) {
+                workers.add(user);
+            }
+        }
+        if (workers.isEmpty()) {
+            return;
+        }
+
+        for (Reservation reservation : reservations) {
+            if (reservation.workerResponsible == null) {
+                int randomIndex = rand.nextInt(workers.size());
+                reservation.workerResponsible = workers.get(randomIndex).username;
+            }
+        }
+    }
+
+
 }
 

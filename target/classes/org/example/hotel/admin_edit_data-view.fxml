@@ -24,7 +24,7 @@
          <VBox alignment="CENTER" prefHeight="170.0" prefWidth="305.0" spacing="10.0">
             <children>
                 <TextField fx:id="hotelNameValue" onKeyTyped="#HasValueChanged_Name" />
-               <TextField />
+               <TextField fx:id="hotelAddressValue" onKeyTyped="#HasValueChanged_Address" />
                <Spinner fx:id="hotelStarsValue" editable="true" onMouseClicked="#HasValueChanged_Stars" />
                <Spinner fx:id="hotelFloorsValue" editable="true" onMouseDragged="#HasValueChanged_Floors" />
                <TextField fx:id="hotelMultiplierValue" onKeyTyped="#HasValueChanged_Multiplier" />
