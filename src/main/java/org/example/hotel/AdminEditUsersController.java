@@ -62,6 +62,8 @@ public class AdminEditUsersController {
 
     @FXML
     protected void addUser() throws IOException {
+        Stage stage_this = (Stage) addUserButton.getScene().getWindow();
+        stage_this.close();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_user-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 600);
         AdminEditUserController controller = fxmlLoader.getController();
@@ -70,6 +72,8 @@ public class AdminEditUsersController {
         stage.setTitle(Language.get("add_user"));
         stage.setScene(scene);
         stage.setOnHiding(event -> {
+            stage_this.show();
+            database.users = FileOperations.loadUsers();
             Tabela.refresh();
         });
         stage.show();
@@ -79,6 +83,8 @@ public class AdminEditUsersController {
     public void onEditUserButtonClick() throws IOException {
         int index = Tabela.getSelectionModel().getSelectedIndex();
         if (index >= 0) {
+            Stage stage_this = (Stage) addUserButton.getScene().getWindow();
+            stage_this.close();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_user-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 700, 600);
             AdminEditUserController controller = fxmlLoader.getController();
@@ -87,6 +93,8 @@ public class AdminEditUsersController {
             stage.setTitle(Language.get("edit_data"));
             stage.setScene(scene);
             stage.setOnHiding(event -> {
+                stage_this.show();
+                database.users = FileOperations.loadUsers();
                 Tabela.refresh();
             });
             stage.show();

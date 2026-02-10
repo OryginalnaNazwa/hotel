@@ -28,6 +28,7 @@ public class AdminEditUserController {
     @FXML private CheckBox adminValue;
 
     public User editedUser;
+    private String originalUsername = "";
     private boolean isNewUser = false;
     Database database = new Database();
 
@@ -51,6 +52,7 @@ public class AdminEditUserController {
             editedUser = new User();
         } else {
             editedUser = user;
+            originalUsername = editedUser.getUsername();
             usernameValue.setText(user.username);
             passwordValue.setText(user.password);
             nameValue.setText(user.name);
@@ -92,14 +94,23 @@ public class AdminEditUserController {
             return;
         }
 
-        // Check if username already exists (only for new users)
-        if (isNewUser) {
-            for (User u : database.users) {
-                if (u.username.equals(username)) {
-                    errorLabel.setText(Language.get("error_username_exists"));
-                    return;
-                }
+        // Check if username already exists
+        for (User u : database.users) {
+            if (u.username.equals(username) && !u.username.equals(editedUser.username)) {
+                errorLabel.setText(Language.get("error_username_exists"));
+                return;
             }
+        }
+
+        boolean validEmail = false;
+        for  (int i = 0; i < email.length(); i++) {
+            if (email.charAt(i) == '@') {
+                validEmail = true;
+            }
+        }
+        if (!validEmail) {
+            errorLabel.setText(Language.get("error_email"));
+            return;
         }
 
         // Save to user
@@ -113,6 +124,13 @@ public class AdminEditUserController {
 
         if (isNewUser) {
             database.users.add(editedUser);
+        } else {
+            for (int i = 0; i < database.users.size(); i++) {
+                if (database.users.get(i).username.equals(originalUsername)) {
+                    database.users.set(i, editedUser);
+                    break;
+                }
+            }
         }
 
         FileOperations.saveUsers(database.users);

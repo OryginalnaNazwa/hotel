@@ -46,6 +46,9 @@ public class AdminEditRoomController {
         if (room == null) {
             isNewRoom = true;
             editedRoom = new Room();
+            Integer newId = database.hotel.rooms.size() + 1;
+            editedRoom.setId(newId);
+            idValue.setText(newId.toString());
         } else {
             editedRoom = room;
             idValue.setText(String.valueOf(room.id));
@@ -98,6 +101,13 @@ public class AdminEditRoomController {
 
             if (isNewRoom) {
                 database.hotel.rooms.add(editedRoom);
+            } else {
+                for (int i = 0; i < database.hotel.rooms.size(); i++) {
+                    if (database.hotel.rooms.get(i).id == editedRoom.id) {
+                        database.hotel.rooms.set(i, editedRoom);
+                        break;
+                    }
+                }
             }
 
             FileOperations.saveRooms(database.hotel.rooms);

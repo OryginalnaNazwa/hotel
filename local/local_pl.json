@@ -67,5 +67,6 @@
   "error_empty_lastname": "Nazwisko nie może być puste",
   "error_username_exists": "Nazwa użytkownika jest już zajęta",
   "edit_user": "Edytuj użytkownika",
-  "delete_user": "Usuń użytkownika"
+  "delete_user": "Usuń użytkownika",
+  "error_email": "Niewłaściwy email"
 }

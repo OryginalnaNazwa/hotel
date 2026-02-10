@@ -65,5 +65,6 @@
   "error_empty_lastname": "Last name cannot be empty",
   "error_username_exists": "Username already exists",
   "edit_user": "Edit user",
-  "delete_user": "Delete user"
+  "delete_user": "Delete user",
+  "error_email": "Invalid email"
 }

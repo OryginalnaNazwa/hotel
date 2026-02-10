@@ -234,7 +234,7 @@ public class UserManageReservationsController {
      */
     @FXML
     void DecreaseFloor() {
-        if (currentFloor > 0) {
+        if (currentFloor > 1) {
             currentFloor--;
         }
         MapFloor();
@@ -288,9 +288,9 @@ public class UserManageReservationsController {
 
     private void showRoomInfo(Room room) {
         int roomCheck = CheckRoom(room);
-        String info = Language.get("room") + " " + room.number + " - " + Language.get("floor") + room.floor + "\n";
+        String info = Language.get("room") + " " + room.number + " - " + Language.get("floor") + " " + room.floor + "\n";
         info += Language.get("beds") + ": " + room.beds + "\n";
-        info += Language.get("premium") + (room.premium ? Language.get("yes") : Language.get("no")) + "\n";
+        info += Language.get("premium") + ": " + (room.premium ? Language.get("yes") : Language.get("no")) + "\n";
         info += Language.get("status") + ": ";
 
         switch (roomCheck) {

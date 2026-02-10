@@ -9,12 +9,12 @@
         "username": "admin"
     },
     {
-        "lastName": "No last name",
+        "lastName": "",
         "password": "user",
-        "phone": "No phone",
-        "name": "No name",
+        "phone": "",
+        "name": "",
         "admin": false,
-        "email": "No email",
+        "email": "",
         "username": "user"
     }
 ]

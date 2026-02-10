@@ -62,6 +62,8 @@ public class AdminEditRoomsController {
      */
     @FXML
     protected void addRoom() throws IOException {
+        Stage stage_this = (Stage) addRoomButton.getScene().getWindow();
+        stage_this.close();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_room.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 780, 620);
         AdminEditRoomController controller = fxmlLoader.getController();
@@ -70,6 +72,8 @@ public class AdminEditRoomsController {
         stage.setTitle("Hotel Systems");
         stage.setScene(scene);
         stage.setOnHiding(event -> {
+            stage_this.show();
+            database.hotel.rooms = FileOperations.loadRooms();
             Tabela.refresh();
         });
         stage.show();
@@ -79,6 +83,8 @@ public class AdminEditRoomsController {
     public void onEditRoomButtonClick() throws IOException {
         int index = Tabela.getSelectionModel().getSelectedIndex();
         if (index >= 0) {
+            Stage stage_this = (Stage) addRoomButton.getScene().getWindow();
+            stage_this.close();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin_edit_room.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 780, 620);
             AdminEditRoomController controller = fxmlLoader.getController();
@@ -87,6 +93,8 @@ public class AdminEditRoomsController {
             stage.setTitle("Hotel Systems");
             stage.setScene(scene);
             stage.setOnHiding(event -> {
+                stage_this.show();
+                database.hotel.rooms = FileOperations.loadRooms();
                 Tabela.refresh();
             });
             stage.show();
@@ -104,6 +112,7 @@ public class AdminEditRoomsController {
 
     @FXML
     public void onSaveButtonClick() {
+        database.hotel.UpdateRoomPrices();
         FileOperations.saveRooms(database.hotel.rooms);
         Stage stage_this = (Stage) addRoomButton.getScene().getWindow();
         stage_this.close();

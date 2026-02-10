@@ -50,6 +50,7 @@ public class UserController {
         Scene scene = new Scene(fxmlLoader.load(), 480, 320);
         UserEditDataController controller = fxmlLoader.getController();
         controller.currentlyLoggedUser = this.currentlyLoggedUser;
+        controller.loadUserData();
         Stage stage = new Stage();
         stage.setTitle("Hotel Systems - " + Language.get("user_account"));
         stage.setScene(scene);

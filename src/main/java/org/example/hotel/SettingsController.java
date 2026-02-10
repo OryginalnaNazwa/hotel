@@ -34,7 +34,7 @@ public class SettingsController {
     }
 
     @FXML
-    public void onSaveButtonClick(ActionEvent actionEvent) {
+    public void onSaveButtonClick() {
         if (languageChoice.getValue().equals("English")) {
             Language.currentLanguage = "en";
         }  else if (languageChoice.getValue().equals("Polski")) {
@@ -48,7 +48,7 @@ public class SettingsController {
     }
 
     @FXML
-    public void onRejectButtonClick(ActionEvent actionEvent) {
+    public void onRejectButtonClick() {
         Stage stage_this = (Stage) settingsLabel.getScene().getWindow();
         stage_this.close();
     }

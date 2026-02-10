@@ -21,7 +21,7 @@ public class UserEditDataController {
     public Button abortButton;
 
     Database database = new Database();
-    public String currentlyLoggedUser = "";
+    public String currentlyLoggedUser;
 
     @FXML
     TextField nameValue;
@@ -37,10 +37,7 @@ public class UserEditDataController {
     TextField newPasswordValue;
 
     public void initialize() {
-        nameValue.setText(database.GetUserName(currentlyLoggedUser));
-        lastNameValue.setText(database.GetUserLastName(currentlyLoggedUser));
-        emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
-        phoneValue.setText(database.GetUserPhone(currentlyLoggedUser));
+
 
         emailLabel.setText(Language.get("email"));
         phoneLabel.setText(Language.get("phone"));
@@ -53,6 +50,12 @@ public class UserEditDataController {
         abortButton.setText(Language.get("abort"));
     }
 
+    public void loadUserData() {
+        nameValue.setText(database.GetUserName(currentlyLoggedUser));
+        lastNameValue.setText(database.GetUserLastName(currentlyLoggedUser));
+        emailValue.setText(database.GetUserEmail(currentlyLoggedUser));
+        phoneValue.setText(database.GetUserPhone(currentlyLoggedUser));
+    }
 
     /**
      * @brief Saves user data if it is correct.
@@ -154,7 +157,7 @@ public class UserEditDataController {
      */
     @FXML
     protected void HasValueChanged_LastName() {
-        if (lastNameValue.getText().equals(database.GetUserName(currentlyLoggedUser))) {
+        if (lastNameValue.getText().equals(database.GetUserLastName(currentlyLoggedUser))) {
             lastNameValue.setStyle("-fx-border-color: black;");
         }  else {
             lastNameValue.setStyle("-fx-border-color: yellow;");
